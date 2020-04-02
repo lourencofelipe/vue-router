@@ -1,4 +1,4 @@
-import router from './router'
+import VueRouter from './router'
 import Vue from 'vue'
 import Contatos from './views/contatos/Contatos.vue'
 import Home from './views/Home.vue'
