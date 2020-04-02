@@ -2,9 +2,9 @@
      <div>
         <h3 class="font-weight-light">Contatos</h3>
 
-        <ul class="list-group" v-if="contatos.lenght > 0">
+        <ul class="list-group" v-if="contatos">
             <ContatosListaIten 
-            class="list=group-item"
+            class="list-group-item"
             v-for="contato in contatos" 
             :key="contato.id"
             :contato="contato"/>
