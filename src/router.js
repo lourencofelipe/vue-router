@@ -16,6 +16,7 @@ export default new VueRouter({
     {
       path: '/contatos', 
       component: Contatos, 
+      alias: ['/meus-contatos', '/lista-de-contatos'],
       children: [
         // meus-contatos.com/contatos/teste
         {
@@ -25,6 +26,7 @@ export default new VueRouter({
         },  //segmento Dinâmico; meus-contatos.com/contatos/2
         {
           path: ':id/editar',
+          alias: ':id/alterar',
           component: {
             default: ContatoEditar,
             'contato-detalhes': ContatoDetalhes
