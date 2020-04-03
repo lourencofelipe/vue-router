@@ -32,12 +32,17 @@ export default new VueRouter({
           component: {
             default: ContatoEditar,
             'contato-detalhes': ContatoDetalhes
+          },
+          props: {
+            default: true,
+            'contato-detalhes': true
           }
         },
         {
           path: '', 
           component: ContatosHome ,
-          name: 'contatos'
+          name: 'contatos',
+          props: true
         },
         {
           path: '*',
