@@ -11,8 +11,12 @@ export default new VueRouter({
   linkActiveClass: 'active',
   routes: [
     //Ao acessar a rota contatos, o componente que será utilizado será o contatos
-    {path: '/contatos', component: Contatos},
-    {path: '/contatos/:id', component: ContatoDetalhes},  //segmento Dinâmico; meus-contatos.com/contatos/2
+    {
+      path: '/contatos', 
+      component: Contatos, 
+      children: [
+        {path: ':id', component: ContatoDetalhes},  //segmento Dinâmico; meus-contatos.com/contatos/2
+      ]},
     {path: '/', component: Home}
   ]
 })
