@@ -2,6 +2,7 @@ import VueRouter from 'vue-router'
 import Vue from 'vue'
 import Contatos from './views/contatos/Contatos.vue'
 import ContatoDetalhes from './views/contatos/ContatoDetalhes.vue'
+import ContatosHome from './views/contatos/ContatosHome.vue'
 import Home from './views/Home.vue'
 
 
@@ -15,8 +16,10 @@ export default new VueRouter({
       path: '/contatos', 
       component: Contatos, 
       children: [
-        {path: ':id', component: ContatoDetalhes},  //segmento Dinâmico; meus-contatos.com/contatos/2
-      ]},
+        {path: ':id', component: ContatoDetalhes },  //segmento Dinâmico; meus-contatos.com/contatos/2
+        {path: '', component: ContatosHome } 
+      ]
+    },
     {path: '/', component: Home}
   ]
 })
