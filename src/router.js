@@ -4,6 +4,8 @@ import Contatos from './views/contatos/Contatos.vue'
 import ContatoDetalhes from './views/contatos/ContatoDetalhes.vue'
 import ContatosHome from './views/contatos/ContatosHome.vue'
 import ContatoEditar from './views/contatos/ContatosEditar.vue'
+import Erro404 from './views/Erro404.vue'
+import Erro404Contatos from './views/contatos/Erro404Contatos.vue'
 import Home from './views/Home.vue'
 
 
@@ -36,7 +38,11 @@ export default new VueRouter({
           path: '', 
           component: ContatosHome ,
           name: 'contatos'
-        } 
+        },
+        {
+          path: '*',
+          component: Erro404Contatos
+        }, 
       ]
     },
     {
@@ -46,6 +52,10 @@ export default new VueRouter({
     {
       path: '/',
       redirect: '/meus-contatos'
-    }
+    },
+    {
+      path: '*',
+      component: Erro404
+    } // Rota coringa, mais genérica dentra outros tipos de rota.
   ]
 })
