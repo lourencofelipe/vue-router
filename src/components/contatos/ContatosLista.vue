@@ -8,7 +8,7 @@
                 class="form-control"
                 placeholder="Buscar Contatos"
                 @keyup.enter="buscar"
-                :value="$route.query.busca"
+                :value="busca"
             >
         </div>
 
@@ -35,6 +35,7 @@ export default {
     components: {
         ContatosListaIten
     },
+    props: ['busca'],
     data() {
         return {
             contatos: [
@@ -46,7 +47,7 @@ export default {
     },
     computed: {
         contatosFiltrados() {
-            const busca = this.$route.query.busca
+            const busca = this.busca
             return !busca
                    ? this.contatos  
                    : this.contatos.filter(c => c.nome.toLowerCase().includes(busca.toLowerCase()))
