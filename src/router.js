@@ -1,15 +1,15 @@
 import VueRouter from 'vue-router'
 import Vue from 'vue'
-import Contatos from './views/contatos/Contatos.vue'
-import ContatoDetalhes from './views/contatos/ContatoDetalhes.vue'
-import ContatosHome from './views/contatos/ContatosHome.vue'
-import ContatoEditar from './views/contatos/ContatosEditar.vue'
 import Erro404 from './views/Erro404.vue'
 import Erro404Contatos from './views/contatos/Erro404Contatos.vue'
-import Home from './views/Home.vue'
 import Login from './views/login/login.vue'
 import EventBus from './event-bus.js'
 
+const Home = () => import('./views/Home.vue')
+const Contatos = () => import('./views/contatos/Contatos.vue')
+const ContatosHome = () => import('./views/contatos/ContatosHome.vue')
+const ContatoDetalhes = () => import('./views/contatos/ContatoDetalhes.vue')
+const ContatoEditar = () => import('./views/contatos/ContatosEditar.vue')
 
 Vue.use(VueRouter)
 const router =  new VueRouter({
@@ -41,7 +41,6 @@ const router =  new VueRouter({
         return busca ? { busca } :  {}
       },
       children: [
-      
         {
           path: ':id(\\d+)', 
           component: ContatoDetalhes, 
@@ -89,7 +88,7 @@ const router =  new VueRouter({
     },
     {
       path: '/home', 
-      component: Home
+      component: Home, 
     },
     // {
     //   path: '/',
