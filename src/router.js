@@ -41,7 +41,7 @@ const router =  new VueRouter({
           alias: ':id(\\d+)/alterar',
           beforeEnter(to, from, next) {
             console.log('beforeEnter')
-            next()  
+            next(new Error(`Permissões insuficientes para a acessar o recurso ${to.fullPath}`))  
           },
           component: {
             default: ContatoEditar,
@@ -91,8 +91,12 @@ router.beforeResolve((to, from, next) => {
 }) 
 
 // Guarda de rota executada após a navegação ser confirmada, por isso não existe a execução do next().
-router.afterEach((to, from) => {
+router.afterEach(() => {
   console.log('afterEach')
+})
+
+router.onError((erro) => {
+  console.log(erro)
 })
 
 export default router
