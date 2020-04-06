@@ -26,7 +26,7 @@ const router =  new VueRouter({
       children: [
       
         {
-          path: ':id', 
+          path: ':id(\\d+)', 
           component: ContatoDetalhes, 
           name: 'contato',
           props: (route) => {
@@ -37,8 +37,16 @@ const router =  new VueRouter({
           }
         },  //segmento Dinâmico; meus-contatos.com/contatos/id
         {
-          path: ':id/editar',
-          alias: ':id/alterar',
+          path: ':id(\\d+)/editar',
+          alias: ':id(\\d+)/alterar',
+          beforeEnter(to, from, next) {
+            console.log('beforeEnter')
+            if(to.query.autenticado === 'true'){
+              next()
+              return
+            }
+            next('/contatos')
+          },
           component: {
             default: ContatoEditar,
             'contato-detalhes': ContatoDetalhes
