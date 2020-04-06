@@ -24,12 +24,18 @@ export default new VueRouter({
         return busca ? { busca } :  {}
       },
       children: [
-        // meus-contatos.com/contatos/teste
+      
         {
           path: ':id', 
           component: ContatoDetalhes, 
-          name: 'contato'
-        },  //segmento Dinâmico; meus-contatos.com/contatos/2
+          name: 'contato',
+          props: (route) => {
+            return {
+              // Convertando a string para number
+              id: +route.params.id
+            }
+          }
+        },  //segmento Dinâmico; meus-contatos.com/contatos/id
         {
           path: ':id/editar',
           alias: ':id/alterar',

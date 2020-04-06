@@ -3,7 +3,7 @@
         <span>{{ contato.nome }}</span>
         <router-link 
         class="btn btn-info btn-sm float-right"
-        :to="{ name: 'contato', params: { id: contato.id } }">
+        :to="{ path: `/contatos/${contato.id}`}">
             Detalhes
         </router-link>
     </li>
