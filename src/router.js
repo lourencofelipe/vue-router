@@ -10,7 +10,7 @@ import Home from './views/Home.vue'
 
 
 Vue.use(VueRouter)
-export default new VueRouter({
+const router =  new VueRouter({
   mode: 'history',
   linkActiveClass: 'active',
   routes: [
@@ -74,3 +74,16 @@ export default new VueRouter({
     } // Rota coringa, mais genérica dentra outros tipos de rota.
   ]
 })
+
+// Guarda de navegação global.
+router.beforeEach((to, from, next) => {
+  console.log('beforeEach')
+  next()
+})
+
+// Guarda de rota executada após a navegação ser confirmada.
+router.afterEach((to, from) => {
+  console.log('afterEach')
+})
+
+export default router
