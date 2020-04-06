@@ -11,6 +11,14 @@
 
 <script>
 export default {
-    props: ['id']
+    props: ['id'],
+    beforeRouteEnter(to, from, next) {
+        console.log('beforeRouteEnter')
+        if(to.query.autenticado === 'true'){
+            next()
+            return
+        }
+        next('/contatos')
+    }
 }
 </script>
