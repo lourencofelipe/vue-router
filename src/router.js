@@ -8,6 +8,7 @@ import Erro404 from './views/Erro404.vue'
 import Erro404Contatos from './views/contatos/Erro404Contatos.vue'
 import Home from './views/Home.vue'
 import Login from './views/login/login.vue'
+import EventBus from './event-bus.js'
 
 
 Vue.use(VueRouter)
@@ -94,6 +95,16 @@ const router =  new VueRouter({
 router.beforeEach((to, from, next) => {
   console.log('beforeEach')
   console.log('Requer autenticação?', to.meta.requerAutenticacao)
+  const estaAutenticado = EventBus.autenticado
+  if(to.matched.some(rota => rota.meta.requerAutenticacao)) {
+    if(!estaAutenticado){
+      next({
+        path: '/login',
+        query: { redirecionar: to.fullPath }
+      })
+      return
+    }
+  }
   next()
 })
 
