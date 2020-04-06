@@ -15,6 +15,21 @@ Vue.use(VueRouter)
 const router =  new VueRouter({
   mode: 'history',
   linkActiveClass: 'active',
+  scrollBehavior(to, from, savedPosition) {
+    setTimeout(() => {
+      return new Promise((resolve) => {
+        if(savedPosition) {
+          return resolve(savedPosition)
+        }
+        if(to.hash){
+          return resolve({
+            selector: to.hash
+          })
+        }
+        resolve({ x: 0, y: 250 })
+      })
+    }, 2000)
+  },
   routes: [
     //Ao acessar a rota contatos, o componente que será utilizado será o contatos
     {
@@ -43,7 +58,7 @@ const router =  new VueRouter({
           alias: ':id(\\d+)/alterar',
           meta: { requerAutenticacao: true },
           beforeEnter(to, from, next) {
-            console.log('beforeEnter')
+           console.log('beforeEnter')
            next() // continuar
             // next(true) // continuar
             // next(false) // bloquear
