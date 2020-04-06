@@ -85,7 +85,12 @@ router.beforeEach((to, from, next) => {
   next()
 })
 
-// Guarda de rota executada após a navegação ser confirmada.
+router.beforeResolve((to, from, next) => {
+  console.log('beforeResolve')
+  next()
+}) 
+
+// Guarda de rota executada após a navegação ser confirmada, por isso não existe a execução do next().
 router.afterEach((to, from) => {
   console.log('afterEach')
 })
