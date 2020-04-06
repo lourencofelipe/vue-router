@@ -24,10 +24,29 @@
 </template>
 
 <script>
+
+import EventBus from './../../event-bus.js'
+
 export default {
     data() {
         return {
-            
+            usuario: {
+                email: '',
+                senha: ''
+            },
+            mensagem: ''
+        }
+    },
+    methods: {
+        entrar() {
+            if(this.usuario.email === 'vuejs@email.com' && this.usuario.senha === 'vuejs'){
+                EventBus.$emit('autenticar', true)
+                const destino = this.$route.query.redirecionar  || '/contatos'
+                this.$router.push(destino)
+                return
+            }
+            this.mensagem = 'Dados incorretos!'
+            setTimeout(() => this.mensagem = '', 3000)
         }
     }
 }
