@@ -14,11 +14,16 @@ export default {
     props: ['id'],
     beforeRouteEnter(to, from, next) {
         console.log('beforeRouteEnter')
-        if(to.query.autenticado === 'true'){
-            next()
-            return
-        }
-        next('/contatos')
+        // if(to.query.autenticado === 'true'){
+        //     next()
+        //     return
+        // }
+        // next('/contatos')
+    },
+    beforeRouteLeave(to, from, next) {
+        console.log('beforeRouteLeave')
+        const confirmar = window.confirm('Deseja realmente sair?')
+        next(confirmar)
     }
 }
 </script>
